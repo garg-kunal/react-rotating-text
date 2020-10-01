@@ -11,6 +11,8 @@ class ReactRotatingText extends React.Component {
       index: random ? Math.floor(Math.random() * Math.floor(items.length)) : 0,
       output: '',
       substrLength: 0,
+      color:"red",
+      no:0
     };
     this.timeouts = [];
   }
@@ -44,6 +46,13 @@ class ReactRotatingText extends React.Component {
 
     // set the string one character longer
     this.setState({output: word.slice(0, toArray(output).length + 1).join('')});
+
+
+    /// color array pass in it so color b change on word change
+    this.setState({color:col[no]},()=>{
+      no:(no+1)%index
+    });
+    
 
     // if we're still not done, recursively loop again
     if (output.length < word.length) {
